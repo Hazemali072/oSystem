@@ -1,0 +1,296 @@
+@media(min-width:1900px) {
+	.edit-event {
+		display: flex;
+		align-items: center;
+		height: calc(100vh - 140px)
+	}
+}
+
+/* @media (max-width: 1399.98px) {
+	...
+}
+
+@media (max-width: 1199.98px) {
+	...
+}
+
+@media (max-width: 991.98px) {
+	...
+} */
+
+@media (max-width: 767.98px) {
+	.event .content .input-search {
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	table {
+		overflow: auto;
+	}
+
+	.left-side {
+		display: none
+	}
+
+	.right-side {
+		padding: 20px;
+		text-align: center
+	}
+
+	.right-side input {
+		margin: 20px auto
+	}
+
+	.add {
+		margin-bottom: 40px
+	}
+
+	.modal {
+		height: 440px;
+		overflow: auto
+	}
+
+	.two-choose button {
+		font-size: 14px;
+		padding: 10px 20px
+	}
+
+	.shape {
+		display: none
+	}
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+	.shape {
+		display: none
+	}
+
+	/* Force table to not be like tables anymore */
+	table,
+	thead,
+	tbody,
+	th,
+	td,
+	tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr {
+		border: 1px solid #ccc;
+	}
+
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+		z-index: 0;
+	}
+
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+	event data
+	*/
+	#events td:nth-of-type(1):before {
+		content: "Date";
+	}
+
+	#events td:nth-of-type(2):before {
+		content: "Time";
+	}
+
+	#events td:nth-of-type(3):before {
+		content: "Topic";
+	}
+
+	#events td:nth-of-type(4):before {
+		content: "Website";
+	}
+
+	#events td:nth-of-type(5):before {
+		content: "Emails";
+	}
+
+	#events td:nth-of-type(6):before {
+		content: "info";
+	}
+
+	#events td:nth-of-type(7):before {
+		content: "calendar";
+	}
+
+	#events td:nth-of-type(8):before {
+		content: "Edit";
+	}
+
+	#events td:nth-of-type(9):before {
+		content: "Delete";
+	}
+
+	#events td:nth-of-type(10):before {
+		content: "completed";
+	}
+
+
+	/*
+	test data
+	*/
+	#test td:nth-of-type(1):before {
+		content: "Date";
+	}
+
+	#test td:nth-of-type(2):before {
+		content: "Time";
+	}
+
+	#test td:nth-of-type(3):before {
+		content: "Topic";
+	}
+
+	#test td:nth-of-type(4):before {
+		content: "Emails";
+	}
+
+	#test td:nth-of-type(5):before {
+		content: "info";
+	}
+
+	#test td:nth-of-type(6):before {
+		content: "calendar";
+	}
+
+	#test td:nth-of-type(7):before {
+		content: "Edit";
+	}
+
+	#test td:nth-of-type(8):before {
+		content: "Delete";
+	}
+
+	/*
+	complete data
+	*/
+	#complete td:nth-of-type(1):before {
+		content: "Date";
+	}
+
+	#complete td:nth-of-type(2):before {
+		content: "Time";
+	}
+
+	#complete td:nth-of-type(3):before {
+		content: "Topic";
+	}
+
+	#complete td:nth-of-type(4):before {
+		content: "info";
+	}
+
+	#complete td:nth-of-type(5):before {
+		content: "video";
+	}
+
+	#complete td:nth-of-type(6):before {
+		content: "Add video";
+	}
+
+	/*
+	event-today data
+	*/
+	#event-today td:nth-of-type(1):before {
+		content: "Date";
+	}
+
+	#event-today td:nth-of-type(2):before {
+		content: "Time";
+	}
+
+	#event-today td:nth-of-type(3):before {
+		content: "Topic";
+	}
+
+	#event-today td:nth-of-type(4):before {
+		content: "Website";
+	}
+
+	#event-today td:nth-of-type(5):before {
+		content: "Emails";
+	}
+
+	#event-today td:nth-of-type(6):before {
+		content: "info";
+	}
+
+	#event-today td:nth-of-type(7):before {
+		content: "calendar";
+	}
+
+	#event-today td:nth-of-type(8):before {
+		content: "Edit";
+	}
+
+	#event-today td:nth-of-type(9):before {
+		content: "Delete";
+	}
+
+	#event-today td:nth-of-type(10):before {
+		content: "completed";
+	}
+
+	/*
+	test-today data
+	*/
+	#test-today td:nth-of-type(1):before {
+		content: "Date";
+	}
+
+	#test-today td:nth-of-type(2):before {
+		content: "Time";
+	}
+
+	#test-today td:nth-of-type(3):before {
+		content: "Topic";
+	}
+
+	#test-today td:nth-of-type(4):before {
+		content: "Emails";
+	}
+
+	#test-today td:nth-of-type(5):before {
+		content: "info";
+	}
+
+	#test-today td:nth-of-type(6):before {
+		content: "calendar";
+	}
+
+	#test-today td:nth-of-type(7):before {
+		content: "Edit";
+	}
+
+	#test-today td:nth-of-type(8):before {
+		content: "Delete";
+	}
+
+
+}

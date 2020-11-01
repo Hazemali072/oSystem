@@ -1,0 +1,796 @@
+{%load static%}
+{%load crispy_forms_tags%}
+{%load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="{%static 'img/OrevanLogo-03.png'%}">
+	<link rel="stylesheet" href="{%static 'css/all.css'%}">
+	<link rel="stylesheet" href="{%static 'css/bootstrap-grid.min.css'%}">
+	<link rel="stylesheet" href="{%static 'css/default.css'%}">
+	<link rel="stylesheet" href="{%static 'css/theme8.css'%}">
+	<!-- <link rel="stylesheet" href="{%static 'css/animate.css'%}"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link rel="stylesheet" href="{%static 'css/magnific-popup.css'%}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" />
+	<link rel="stylesheet" href="{%static 'css/main.css'%}">
+	<link rel="stylesheet" href="{%static 'css/responsive.css'%}">
+	<title>Events and Tests</title>
+</head>
+
+<body class="event">
+	<div id="particles-js"></div>
+
+	<header class="dash">
+		<div class="container">
+			<div class="row justify-content-between align-items-center">
+				<div class="col-md-6 col-4">
+					<div class="logo">
+						<img src="{%static 'img/Logo-02.png'%}" alt="" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-md-2 col-4 log-out">
+					<a href="{%url 'logoutpage'%}"><i class="fas fa-sign-out-alt"></i> Log out</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="shape">
+		<div class="rellax" data-rellax-speed="2">
+			<img src="{%static 'img/NewElemnts/emelents-11.png'%}" alt="" class="ss-shape ss-one">
+		</div>
+		<div class="rellax" data-rellax-speed="4">
+			<img src="{%static 'img/NewElemnts/emelents-13.png'%}" alt="" class="ss-shape ss-two">
+		</div>
+		<div class="rellax" data-rellax-speed="4">
+			<img src="{%static 'img/NewElemnts/emelents-12.png'%}" alt="" class="ss-shape ss-three">
+		</div>
+		<div class="rellax" data-rellax-speed="4">
+			<img src="{%static 'img/NewElemnts/emelents-09.png'%}" alt="" class="ss-shape ss-four">
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="container">
+			<!--Search form -->
+			<div class="row justify-content-between align-items-center search">
+				<div class="col-md-4 col-12 add">
+					<button id="c-btn" class="btn wow animate__fadeInLeft" data-wow-duration=".9s"><i class="fas fa-plus"></i> Add</button>
+					<button id="r-btn" class="btn wow animate__fadeInLeft" data-wow-duration=".6s"><i class="fas fa-plus"></i> Rehearsal</button>
+				</div>
+				<div class="col-md-8 col-12" style="text-align: right">
+					<form action="">
+						{% render_field filter1.form.topic placeholder="search all" class="input-search wow animate__fadeInRight" data-wow-duration=".6s" %}
+						<button type="submit" name="search_event" class="btn-1 wow animate__fadeInRight" data-wow-duration=".9s">Filter</button>
+						<a href="{%url 'list_events'%}" class="btn-1 wow animate__fadeInRight" data-wow-duration="1.2s">Clear Filter</a>
+					</form>
+				</div>
+			</div>
+			<!--Search form -->
+
+			<!--add-btn popup-->
+			<div id="modal-bg">
+				<div class="modal">
+					<div class="row justify-content-around choose-btn text-center mb-20 mt-20">
+						<h2>Choose Option</h2>
+						<div class="col-8 col-md-4 box-choose wow animate__fadeInDown" data-wow-duration=".3s">
+							<a href="#addEvent" class="ev-popup" data-effect="mfp-zoom-in" id="ev-btn">
+								<img src="{%static 'img/event.png'%}" alt="" class="img-fluid">
+								<h3 class="mt-10">Events</h3>
+							</a>
+						</div>
+						<div class="col-8 col-md-4 box-choose wow animate__fadeInDown" data-wow-duration=".6s">
+							<a href="#addTest" class="ev-popup" data-effect="mfp-zoom-in" id="t-btn">
+								<img src="{%static 'img/test.png'%}" alt="" class="img-fluid">
+								<h3 class="mt-10">Tests</h3>
+							</a>
+						</div>
+					</div>
+					<span id="modal-close">x</span>
+				</div>
+			</div>
+			<!--add-btn popup -->
+
+			<!--add-btn popup -->
+			<div id="modal-bg-r">
+				<div class="modal modal-r">
+					<h2 class="text-center">Add new Rehearsal</h2>
+					<form action="">
+						<div class="row justify-content-center mb-20 mt-20">
+							<div class="col-md-4">
+								<lable class="d-block mb-10">Date</lable>
+								<input type="date" name="date">
+							</div>
+							<div class="col-md-4">
+								<lable class="d-block mb-10">Time</lable>
+								<input type="time" name="date">
+							</div>
+							<div class="col-md-6 mt-20">
+								<lable class="d-block mb-10">Emails</lable>
+								<textarea name="mails" id="" cols="30" rows="10"></textarea>
+							</div>
+						</div>
+						<button type="submit" name="add_r" class="btn-1">Add</button>
+					</form>
+					<span id="modal-close-r">x</span>
+				</div>
+			</div>
+			<!--add-btn popup -->
+
+			<!-- Add Event-->
+			<div id="addEvent" class="container container-popup add-section-popup mfp-hide">
+				<h2 class="text-center mb-20">Add new Event</h2>
+				<div class="row">
+					<div class="col-lg-12">
+						<form method="POST">
+							{% csrf_token %}
+							<table>
+								<tr>
+									<td>Date</td>
+									<td><input type="date" name="date" required></td>
+								</tr>
+								<tr>
+									<td>Time</td>
+									<td><input type="time" name="time" required></td>
+								</tr>
+								<tr>
+									<td>Duration</td>
+									<td><input type="text" class="html-duration-picker" name="duration" required></td>
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td><select class="selectpicker countrypicker" name="country" required></select></td>
+								</tr>
+								<tr>
+									<td>Topic</td>
+									<td><input type="text" placeholder="Topic" name="topic" required></td>
+								</tr>
+								<tr>
+									<td>Emails</td>
+									<td><input type="text" placeholder="Emails" name="emails" required></td>
+								</tr>
+								<tr>
+									<td>Embed</td>
+									<td><input type="text" placeholder="Embed" name="embeded" required></td>
+								</tr>
+								<tr>
+									<td>Client</td>
+									<td>
+										<select name="client" required>
+											<option value="novartis">Novartis</option>
+											<option value="sandoz">Sandoz</option>
+											<option value="bayer">Bayer</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>Website</td>
+									<td><input type="url" placeholder="Website" name="website" required></td>
+								</tr>
+								<tr>
+									<td>Automatic test ? </td>
+									<td>
+										<input type="checkbox" value="True" class="radio" name="auto_test_creation">
+									</td>
+								</tr>
+							</table>
+							<button type="submit" name="add_event" class="btn-1 add-btn">Add</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- Add Event-->
+
+			<!-- Add test-->
+			<div id="addTest" class="container container-popup add-section-popup mfp-hide">
+				<h2 class="text-center mb-20">Add new Test</h2>
+				<div class="row">
+					<div class="col-lg-12">
+						<form method="POST">
+							{% csrf_token %}
+							<table>
+								<tr>
+									<td>Date</td>
+									<td><input type="date" name="date" required></td>
+								</tr>
+								<tr>
+									<td>Time</td>
+									<td><input type="time" name="time" required></td>
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td><select class="selectpicker countrypicker" name="country" required></select></td>
+								</tr>
+								<tr>
+									<td>Topic</td>
+									<td><input type="text" placeholder="Topic" name="topic" required></td>
+								</tr>
+								<tr>
+									<td>Emails</td>
+									<td><input type="text" placeholder="Emails" name="emails" required></td>
+								</tr>
+
+								<tr>
+									<td>Client</td>
+									<td>
+										<select name="client" required>
+											<option value="novartis">Novartis</option>
+											<option value="sandoz">Sandoz</option>
+											<option value="bayer">Bayer</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+							<button type="submit" name="add_test" class="btn-1 add-btn">Add</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- Add test-->
+		</div>
+
+		<div class="container">
+			<div class="tables">
+				<div class="two-choose">
+					<ul>
+						<li><button class="tablinks active-btn fTb wow animate__fadeInLeft" data-wow-duration=".2s" onclick="openSec(event, 'events')">Events</button></li>
+						<li><button class="tablinks tb wow animate__fadeInLeft" data-wow-duration=".4s" onclick="openSec(event, 'test')">Tests</button></li>
+						<li><button class="tablinks tb wow animate__fadeInLeft" data-wow-duration=".6s" onclick="openSec(event, 'complete')">Completed</button></li>
+						<li><button class="tablinks tb wow animate__fadeInLeft" data-wow-duration=".8s" onclick="openSec(event, 'today')">Today</button></li>
+					</ul>
+				</div>
+				<!--Start tables-->
+
+				<div class="c-tables">
+					<!--event tables-->
+					<div id="events" class="tabcontent wow animate__fadeInUp" data-wow-duration="1.2s">
+						<table>
+							<thead>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Topic</th>
+								<th>Website</th>
+								<th>Emails</th>
+								<th>info</th>
+								<th>calendar</th>
+								<th>Edit</th>
+								<th>Delete</th>
+								<th>completed</th>
+							</thead>
+							<tbody>
+								{% for event in filter1.qs %}
+								{%if not event.complete%}
+								<tr>
+									<!-- Add date variable -->
+									<td>{{event.date}}</td>
+									<!-- Add time variable -->
+									<td>{{event.time}}</td>
+									<!-- Add topic variable -->
+									<td>{{event.topic}}</td>
+									<!-- Website variable -->
+									<td><a href="{{event.website}}" target="_blank"> <span class="icon"><i class="fas fa-link"></i></span></a>
+									</td>
+									<!-- sent Emails variable -->
+
+									{%if event.notification%}
+									<td class="s-mail"><a href="{%url 'emails_sent' event.id%}">
+											<span class="icon icon-action" style="background-color: rgba(255, 255, 50 ,.5);">
+												<i class="far fa-paper-plane" style="color: #c54f0b;"></i>
+											</span>
+										</a></td>
+									{%else%}
+
+									<td class="s-mail"><a href="{%url 'emails_sent' event.id%}">
+											<span class="icon icon-action" style="background-color:rgba(224, 62, 75, .6);">
+												<i class="far fa-paper-plane" style="color: #e01c2d;"></i>
+											</span>
+										</a></td>
+									{%endif%}
+
+									<td><a href="#eventPopup_{{event.id}}" class="ev-popup"> <span class="icon"><i class="fas fa-info-circle"></i></span>
+										</a></td>
+									<td>
+										<!-- AddEvent button -->
+										<div title="Add to Calendar" class="addeventatc" data-styling="none">
+											<img src="{% static '/img/gfx/icon-calendar-t1.svg'%}" alt="" style="width:18px;" />
+											<span class="start">{{event.date}} {{event.time}}</span>
+											<span class="timezone">{{event.country}}</span>
+											<span class="title">{{event.topic}}</span>
+											<!-- <span class="description">Description of the event</span> -->
+											<span class="location">{{event.country}}</span>
+											<span class="organizer">{{event.owner}}</span>
+										</div>
+									</td>
+									<!-- Edit-->
+									<td>
+										<a href="{%url 'edit_event' event.id%}"> <span class="icon"><i class="far fa-edit"></i></span></a>
+									</td>
+									<!--Delete-->
+									<td>
+										<span> <a href="#{{event.id}}" class="ev-popup"><span class="icon"><i class="far fa-trash-alt"></i></span></a></span>
+									</td>
+									<td><a href="{%url 'complete' event.id%}"><span class="icon"><i class="far fa-check-square"></i></span></a></td>
+								</tr>
+								<!--Delete Message-->
+								<div id="{{event.id}}" class="container delete-box ev-section-popup mfp-hide">
+									<h2 class="mb-20">Are you sure</h2>
+									<img src="{% static 'img/trash-bin.gif'%}" alt="" style="max-width: 120px">
+									<div class="row justify-content-center align-items-center pb-30 mt-30">
+										<div class="col-md-4">
+											<a href="{%url 'delete_event' event.id%}" class="btn">yes</a>
+										</div>
+										<div class="col-md-4">
+											<a href="{%url 'list_events'%}" class="btn">No</a>
+										</div>
+									</div>
+								</div>
+								<!--Delete Message-->
+								{%endif%}
+								{%endfor%}
+							</tbody>
+						</table>
+					</div>
+					<!--event tables-->
+
+					<!-- popup Details Event start-->
+					{% for event in filter1.qs %}
+					{%if not event.complete%}
+					<div id="eventPopup_{{event.id}}" class="container container-popup ev-section-popup mfp-hide">
+						<div class="row justify-content-center">
+							<div class="col-lg-12">
+								<div class="ev-section-popup-content">
+									<table>
+										<tr>
+											<td>Date</td>
+											<td>{{event.date}}</td>
+										</tr>
+										<tr>
+											<td>Time</td>
+											<td>{{event.time}}</td>
+										</tr>
+										<tr>
+											<td>Topic</td>
+											<td>{{event.topic}}</td>
+										</tr>
+										<tr>
+											<td>Client</td>
+											<td>{{event.client}}</td>
+										</tr>
+
+										<tr>
+											<td>Speaker Emails</td>
+											<td id="Ev-emails">{{event.emails}} <span data-clipboard-action="copy" data-clipboard-target="#Ev-emails" class="btn-copy"><span class="icon"><i class="fas fa-copy"></i></span></span>
+											</td>
+										</tr>
+										<tr>
+											<td>country</td>
+											<td>{{event.country}}</td>
+										</tr>
+										<tr>
+											<td>Owner</td>
+											<td>{{event.user.name}}</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					{%endif%}
+					{%endfor%}
+					<!-- popup Details Event end-->
+
+					<!--Test tables-->
+					<div id="test" class="tabcontent tabcontent-none wow animate__fadeInUp" data-wow-duration=".8s">
+						<table>
+							<thead>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Topic</th>
+								<th>Emails</th>
+								<th>info</th>
+								<th>calendar</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</thead>
+							<tbody>
+								{% for test in filter2.qs %}
+								<tr>
+									<!-- Add date variable -->
+									<td>{{test.date}}</td>
+									<!-- Add time variable -->
+									<td>{{test.time}}</td>
+									<!-- Add topic variable -->
+									<td>{{test.topic}}</td>
+									<!-- sent Emails variable -->
+									{%if test.notification%}
+									<td class="s-mail"><a href="{%url 'emails_sent' test.id%}">
+											<span class="icon icon-action" style="background-color: rgba(255, 255, 50 ,.5);">
+												<i class="far fa-paper-plane" style="color: #c54f0b;"></i>
+											</span>
+										</a></td>
+									{%else%}
+
+									<td class="s-mail"><a href="{%url 'emails_sent' test.id%}">
+											<span class="icon icon-action" style="background-color:rgba(224, 62, 75, .6);">
+												<i class="far fa-paper-plane" style="color: #e01c2d;"></i>
+											</span>
+										</a></td>
+									{%endif%}
+									<td><a href="#testPopup_{{test.id}}" class="ev-popup" data-effect="mfp-zoom-in"> <span class="icon"><i class="fas fa-info-circle"></i></span>
+										</a></td>
+									<!-- Add to calendar -->
+									<td>
+										<!-- AddEvent button -->
+										<div title="Add to Calendar" class="addeventatc" data-styling="none">
+											<img src="{% static '/img/gfx/icon-calendar-t1.svg'%}" alt="" style="width:18px;" />
+											<span class="start">{{test.date}} {{test.time}}</span>
+											<span class="timezone">{{test.country}}</span>
+											<span class="title">{{test.topic}}</span>
+											<!-- <span class="description">Description of the event</span> -->
+											<span class="location">{{test.country}}</span>
+											<span class="organizer">{{test.owner}}</span>
+										</div>
+									</td>
+									<td>
+										<a href="editTest.html"><span class="icon"><i class="far fa-edit"></i></span></a>
+									</td>
+									<td>
+										<span> <a href="#{{test.id}}" class="ev-popup"><span class="icon"><i class="far fa-trash-alt"></i></span></a></span>
+									</td>
+								</tr>
+								<!--Delete Message-->
+								<div id="{{test.id}}" class="container delete-box ev-section-popup mfp-hide">
+									<h2 class="mb-20">Are you sure</h2>
+									<img src="{% static 'img/trash-bin.gif'%}" alt="" style="max-width: 120px">
+									<div class="row justify-content-center align-items-center pb-30 mt-30">
+										<div class="col-md-4">
+											<a href="{%url 'delete_event' test.id%}" class="btn">yes</a>
+										</div>
+										<div class="col-md-4">
+											<a href="{%url 'list_events'%}" class="btn">No</a>
+										</div>
+									</div>
+								</div>
+								<!--Delete Message-->
+								{%endfor%}
+							</tbody>
+						</table>
+
+					</div>
+					<!--Test tables-->
+
+					<!-- popup Details Test start-->
+					{% for test in filter2.qs %}
+					<div id="testPopup_{{test.id}}" class="container container-popup ev-section-popup mfp-hide">
+						<div class="row justify-content-center">
+							<div class="col-lg-12">
+								<div class="ev-section-popup-content">
+									<table>
+										<tr>
+											<td>Date</td>
+											<td>22/9/2020</td>
+										</tr>
+										<tr>
+											<td>Time</td>
+											<td>2:00pm</td>
+										</tr>
+										<tr>
+											<td>Topic</td>
+											<td>Emerging treatment options for spondyloarthritis</td>
+										</tr>
+										<tr>
+											<td>Client</td>
+											<td>Novartis</td>
+										</tr>
+										<tr>
+											<td>Speaker Emails</td>
+											<td id="ST-emails">Xenofon.Baraliakos@elisabethgruppe.de
+												drpnash@tpg.com.au
+												nancy.zakaria@novartis.com
+												Mohamed.alturki@novartis.com <span data-clipboard-action="copy" data-clipboard-target="#ST-emails" class="btn-copy"><span class="icon"><i class="fas fa-copy"></i></span></span>
+											</td>
+										</tr>
+										{%endfor%}
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- popup Details end-->
+
+					<!--complete tables-->
+					
+					<div id="complete" class="tabcontent tabcontent-none wow animate__fadeInUp" data-wow-duration=".8s">
+						<!--Events tables-->
+						<table>
+							<thead>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Topic</th>
+								<th>info</th>
+								<th>video</th>
+								<th>Add video</th>
+							</thead>
+							<tbody>
+								{% for event in filter1.qs %}
+								{%if  event.complete%}
+								<tr>
+									<!-- Add date variable -->
+									<td>{{event.date}}</td>
+									<!-- Add time variable -->
+									<td>{{event.time}}</td>
+									<!-- Add topic variable -->
+									<td>{{event.topic}}</td>
+									<td><a href="#completePopup_1" class="ev-popup"> <span class="icon"><i class="fas fa-info-circle"></i></span>
+										</a></td>
+
+									{%if event.video is None%}
+									<td>
+										<span class="icon" style="background-color: rgba(224, 62, 75, .6);color: #e01c2d;font-weight: 800">not added yet</span>
+									</td>
+									{%else%}
+									<td>
+										<div class="d-icon" style="background-color: rgba(255, 255, 50 ,.5); text-align: center; display: inline;padding: 10px 0;border-radius: 5px;">
+											<a href="{{event.video}}" target="_blank" style="padding: 0 5px">
+												<span class="icon icon-action">
+													<i class="fas fa-link" style="color: #c54f0b;"></i>
+												</span>
+											</a>
+											<span data-clipboard-action="copy" data-clipboard-text="{{event.video}}" class="btn-copy"><span class="icon icon-action">
+													<i class="fas fa-copy" style="color: #c54f0b;"></i>
+												</span>
+											</span>
+										</div>
+									</td>
+									{%endif%}
+									<td><a href="#{{event.id}}" class="ev-popup" data-effect="mfp-zoom-in"><span class="icon"><i class="far fa-plus-square"></i></span></a></td>
+								</tr>
+								{%endif%}
+								{%endfor%}
+							</tbody>
+						</table>
+						<!--Events tables-->
+					</div>
+					<!--complete tables-->
+					<!-- popup Details Event start-->
+
+					<!-- popup Details Event end-->
+
+					{% for event in filter1.qs %}
+					<div id="{{event.id}}" class="container container-popup ev-section-popup mfp-hide" style="height: 180px">
+						<div class="add-video">
+							<h2 class="d-block mb-20">Add video link</h2>
+							<form method="POST">
+								{% csrf_token %}
+								<input type="url" placeholder="Link" required name="video">
+								<input type="number" name="id" value="{{event.id}}" style="display:none">
+								<button type="submit" name="add_video" class="btn">Add</button>
+							</form>
+						</div>
+					</div>
+					{%endfor%}
+
+					<!-- popup Details Event start-->
+					<!--					{% for event in filter1.qs %}-->
+					<!--					{%if not event.complete%}-->
+					<div id="completePopup_1" class="container container-popup ev-section-popup mfp-hide">
+						<div class="row justify-content-center">
+							<div class="col-lg-12">
+								<div class="ev-section-popup-content">
+									<table>
+										<tr>
+											<td>Date</td>
+											<td>{{event.date}}</td>
+										</tr>
+										<tr>
+											<td>Time</td>
+											<td>{{event.time}}</td>
+										</tr>
+										<tr>
+											<td>Topic</td>
+											<td>{{event.topic}}</td>
+										</tr>
+										<tr>
+											<td>Client</td>
+											<td>{{event.client}}</td>
+										</tr>
+
+										<tr>
+											<td>Speaker Emails</td>
+											<td id="Ev-emails">{{event.emails}} <span data-clipboard-action="copy" data-clipboard-target="#Ev-emails" class="btn-copy"><span class="icon"><i class="fas fa-copy"></i></span></span>
+											</td>
+										</tr>
+										<tr>
+											<td>country</td>
+											<td>{{event.country}}</td>
+										</tr>
+										<tr>
+											<td>Owner</td>
+											<td>{{event.user.name}}</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--					{%endif%}-->
+					<!--					{%endfor%}-->
+					<!-- popup Details Event end-->
+
+
+					<!--today tables-->
+					<div id="today" class="tabcontent tabcontent-none ">
+						<div id="event-today">
+							<h2 class="wow animate__fadeInUp" data-wow-duration=".6s">Events</h2>
+						<h1 class="text-center" style="display: none">No events</h1>
+						<table class="wow animate__fadeInUp" data-wow-duration=".8s">
+							<thead>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Topic</th>
+								<th>Website</th>
+								<th>Emails</th>
+								<th>info</th>
+								<th>calendar</th>
+								<th>Edit</th>
+								<th>Delete</th>
+								<th>completed</th>
+							</thead>
+							<tbody>
+								{% for event in todays_events %}
+								{%if not event.complete%}
+								<tr>
+									<!-- Add date variable -->
+									<td>{{event.date}}</td>
+									<!-- Add time variable -->
+									<td>{{event.time}}</td>
+									<!-- Add topic variable -->
+									<td>{{event.topic}}</td>
+									<!-- Website variable -->
+									<td><a href="{{event.website}}" target="_blank"> <span class="icon"><i class="fas fa-link"></i></span></a>
+									</td>
+									<!-- sent Emails variable -->
+
+									{%if event.notification%}
+									<td class="s-mail"><a href="{%url 'emails_sent' event.id%}">
+											<span class="icon" style="background-color: rgba(255, 255, 50 ,.5);">
+												<i class="far fa-paper-plane" style="color: #c54f0b;"></i>
+											</span>
+										</a></td>
+									{%else%}
+
+									<td class="s-mail"><a href="{%url 'emails_sent' event.id%}">
+											<span class="icon" style="background-color:rgba(224, 62, 75, .6);">
+												<i class="far fa-paper-plane" style="color: #e01c2d;"></i>
+											</span>
+										</a></td>
+									{%endif%}
+
+									<td><a href="#eventPopup_{{event.id}}" class="ev-popup"><span class="icon"> <i class="fas fa-info-circle"></i></span></a></td>
+									<!-- Add to calendar -->
+									<td>
+										<!-- AddEvent button -->
+										<div title="Add to Calendar" class="addeventatc" data-styling="none">
+											<img src="{% static '/img/gfx/icon-calendar-t1.svg'%}" alt="" style="width:18px;" />
+											<span class="start">{{event.date}} {{event.time}}</span>
+											<span class="timezone">{{event.country}}</span>
+											<span class="title">{{event.topic}}</span>
+											<!-- <span class="description">Description of the event</span> -->
+											<span class="location">{{event.country}}</span>
+											<span class="organizer">{{event.owner}}</span>
+										</div>
+									</td>
+									<!-- Edit-->
+									<td>
+										<a href="editEvent.html" data-effect="mfp-zoom-in"> <span class="icon"><i class="far fa-edit"></i></span></a>
+									</td>
+									<!--Delete-->
+									<td>
+										<span> <a href="{%url 'delete_event' event.id%}"><span class="icon"><i class="far fa-trash-alt"></i></span></a></span>
+									</td>
+									<td><a href="#"><span class="icon"><i class="far fa-check-square"></i></span></a></td>
+								</tr>
+								{%endif%}
+								{%endfor%}
+							</tbody>
+						</table>
+						<!--Events tables-->
+						</div>
+
+						<div id="test-today">
+							<!--Test tables-->
+						<h2 class="wow animate__fadeInUp" data-wow-duration=".8s">Test</h2>
+						<table class="wow animate__fadeInUp" data-wow-duration="1s">
+							<thead>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Topic</th>
+								<th>Emails</th>
+								<th>calendar</th>
+								<th>Edit</th>
+								<th>Delete</th>
+								<th>completed</th>
+							</thead>
+							<tbody>
+								{% for test in todays_tests %}
+								<tr>
+									<!-- Add date variable -->
+									<td>{{test.date}}</td>
+									<!-- Add time variable -->
+									<td>{{test.time}}</td>
+									<!-- Add topic variable -->
+									<td><a href="#testPopup_2" class="ev-popup" data-effect="mfp-zoom-in">{{test.topic}}</a></td>
+									<!-- sent Emails variable -->
+									{%if test.notification%}
+									<td class="s-mail"><a href="{%url 'emails_sent' test.id%}">
+											<span class="icon" style="background-color: rgba(255, 255, 50 ,.5);">
+												<i class="far fa-paper-plane" style="color: #c54f0b;"></i>
+											</span>
+										</a></td>
+									{%else%}
+
+									<td class="s-mail"><a href="{%url 'emails_sent' test.id%}">
+											<span class="icon" style="background-color:rgba(224, 62, 75, .6);">
+												<i class="far fa-paper-plane" style="color: #e01c2d;"></i>
+											</span>
+										</a></td>
+									{%endif%}
+									<!-- Add to calendar -->
+									<td>
+										<!-- AddEvent button -->
+										<div title="Add to Calendar" class="addeventatc" data-styling="none">
+											<img src="{% static '/img/gfx/icon-calendar-t1.svg'%}" alt="" style="width:18px;" />
+											<span class="start">{{test.date}} {{test.time}}</span>
+											<span class="timezone">{{test.country}}</span>
+											<span class="title">{{test.topic}}</span>
+											<!-- <span class="description">Description of the event</span> -->
+											<span class="location">{{test.country}}</span>
+											<span class="organizer">{{test.owner}}</span>
+										</div>
+									</td>
+									<td>
+										<a href="editTest.html"><i class="far fa-edit"></i></a>
+									</td>
+									<td>
+										<span> <a href="{%url 'delete_test' test.id%}"><i class="far fa-trash-alt"></i></a></span>
+									</td>
+									<td><a href="#"><i class="far fa-check-square"></i></a></td>
+								</tr>
+								{%endfor%}
+							</tbody>
+						</table>
+						<!--test tables-->
+						</div>
+					</div>
+					<!--today tables-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script src="{%static 'js/jquery.js'%}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="{%static 'js/jquery.magnific-popup.min.js'%}"></script>
+	<script src="{%static 'js/clipboard.min.js'%}"></script>
+	<script src="{%static 'js/jquery.nicescroll.min.js'%}"></script>
+	<script src="{%static 'js/wow.min.js'%}"></script>
+	<script src="{%static 'js/all.js'%}"></script>
+	<script src="{%static 'js/particles.min.js'%}"></script>
+	<script src="{%static 'js/app.js'%}"></script>
+	<script src="{%static 'js/rellax.min.js'%}"></script>
+	<script src="{%static 'js/bootstrap.min.js'%}"></script>
+	<script src="{%static 'js/html-duration-picker.min.js'%}"></script>
+	<script src="{%static 'js/countrypicker.min.js'%}"></script>
+	<script src="{%static 'js/main.js'%}"></script>
+	<script src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+</body>
+
+</html>

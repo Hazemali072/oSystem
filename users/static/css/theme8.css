@@ -1,0 +1,217 @@
+@import url("https://p.typekit.net/p.css?s=1&k=abg0smv&ht=tk&f=37387.37389.37392&a=2826771&app=typekit&e=css");
+
+@font-face {
+	font-family: "kiro";
+	src: url("https://use.typekit.net/af/cb5988/00000000000000003b9b12dd/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"), url("https://use.typekit.net/af/cb5988/00000000000000003b9b12dd/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"), url("https://use.typekit.net/af/cb5988/00000000000000003b9b12dd/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+	font-display: auto;
+	font-style: normal;
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: "kiro";
+	src: url("https://use.typekit.net/af/30fd2a/00000000000000003b9b12df/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"), url("https://use.typekit.net/af/30fd2a/00000000000000003b9b12df/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"), url("https://use.typekit.net/af/30fd2a/00000000000000003b9b12df/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+	font-display: auto;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "kiro";
+	src: url("https://use.typekit.net/af/69d5b6/00000000000000003b9b12e2/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"), url("https://use.typekit.net/af/69d5b6/00000000000000003b9b12e2/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"), url("https://use.typekit.net/af/69d5b6/00000000000000003b9b12e2/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+	font-display: auto;
+	font-style: normal;
+	font-weight: 700;
+}
+
+/* The button */
+.addeventatc {
+	display: inline-block;
+	position: relative;
+	font-family: "kiro", sans-serif;
+	font-weight: 600;
+	color: #333;
+	text-decoration: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.addeventatc:hover {
+	color: #555;
+	font-size: 16px;
+	text-decoration: underline;
+}
+
+.addeventatc:active {
+	outline: 0 !important;
+}
+
+.addeventatc .start,
+.addeventatc .end,
+.addeventatc .timezone,
+.addeventatc .title,
+.addeventatc .description,
+.addeventatc .location,
+.addeventatc .organizer,
+.addeventatc .organizer_email,
+.addeventatc .facebook_event,
+.addeventatc .all_day_event,
+.addeventatc .date_format,
+.addeventatc .alarm_reminder,
+.addeventatc .recurring,
+.addeventatc .attendees,
+.addeventatc .calname,
+.addeventatc .uid,
+.addeventatc .status,
+.addeventatc .method,
+.addeventatc .client,
+.addeventatc .transp {
+	display: none !important;
+}
+
+/* Drop down */
+.addeventatc_dropdown {
+	width: 230px;
+	position: absolute;
+	padding: 6px 0px 0px 0px;
+	font-family: "Open Sans", Roboto, "Helvetica Neue", Helvetica, Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	color: #000 !important;
+	font-weight: 600;
+	line-height: 100%;
+	background: #fff;
+	font-size: 15px;
+	text-decoration: none;
+	text-align: left;
+	margin-left: -1px;
+	display: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 26px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 26px;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 26px;
+	transform: scale(.98, .98) translateY(5px);
+	z-index: -1;
+	transition: transform .15s ease;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.addeventatc_dropdown.topdown {
+	transform: scale(.98, .98) translateY(-5px) !important;
+}
+
+.addeventatc_dropdown span {
+	display: block;
+	line-height: 100%;
+	background: #fff;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 15px;
+	color: #333;
+	font-weight: 600;
+	padding: 14px 10px 14px 55px;
+	margin: -2px 0px;
+}
+
+.addeventatc_dropdown span:hover {
+	background-color: #f4f4f4;
+	color: #000;
+	text-decoration: none;
+	font-size: 15px;
+}
+
+.addeventatc_dropdown em {
+	color: #999 !important;
+	font-size: 12px !important;
+	font-weight: 400;
+}
+
+.addeventatc_dropdown .frs a {
+	background: #fff;
+	color: #cacaca !important;
+	cursor: pointer;
+	font-size: 9px !important;
+	font-style: normal !important;
+	font-weight: 400 !important;
+	line-height: 110% !important;
+	padding-left: 10px;
+	position: absolute;
+	right: 10px;
+	text-align: right;
+	text-decoration: none;
+	top: 5px;
+	z-index: 101;
+}
+
+.addeventatc_dropdown .frs a:hover {
+	color: #999 !important;
+}
+
+.addeventatc_dropdown .ateappleical {
+	background: url(../img/gfx/icon-apple-t5.svg) 18px 40% no-repeat;
+	background-size: 22px 100%;
+}
+
+.addeventatc_dropdown .ategoogle {
+	background: url(../img/gfx/icon-google-t5.svg) 18px 50% no-repeat;
+	background-size: 22px 100%;
+}
+
+.addeventatc_dropdown .ateoffice365 {
+	background: url(../img/gfx/icon-office365-t5.svg) 19px 50% no-repeat;
+	background-size: 18px 100%;
+	display: none
+}
+
+.addeventatc_dropdown .ateoutlook {
+	background: url(../img/gfx/icon-outlook-t5.svg) 18px 50% no-repeat;
+	background-size: 22px 100%;
+	display: none
+}
+
+.addeventatc_dropdown .ateoutlookcom {
+	background: url(../img/gfx/icon-outlookcom-t5.svg) 18px 50% no-repeat;
+	background-size: 22px 100%;
+}
+
+.addeventatc_dropdown .ateyahoo {
+	background: url(../img/gfx/icon-yahoo-t5.svg) 18px 50% no-repeat;
+	background-size: 22px 100%;
+	display: none
+}
+
+.addeventatc_dropdown .atefacebook {
+	background: url(../img/gfx/icon-facebook-t5.svg) 18px 50% no-repeat;
+	background-size: 22px 100%;
+}
+
+.addeventatc_dropdown .copyx {
+	height: 21px;
+	display: block;
+	position: relative;
+	cursor: default;
+}
+
+.addeventatc_dropdown .brx {
+	height: 1px;
+	overflow: hidden;
+	background: #e8e8e8;
+	position: absolute;
+	z-index: 100;
+	left: 10px;
+	right: 10px;
+	top: 9px;
+}
+
+.addeventatc_dropdown.addeventatc-selected {
+	transform: scale(1, 1) translateY(0px);
+	z-index: 99999999999;
+}
+
+.addeventatc_dropdown.topdown.addeventatc-selected {
+	transform: scale(1, 1) translateY(0px) !important;
+}
+
+.addeventatc_dropdown .drop_markup {
+	background-color: #f4f4f4;
+}

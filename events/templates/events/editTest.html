@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="img/OrevanLogo-03.png">
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/default.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css'%}" rel="stylesheet" />
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<title>Topic</title>
+</head>
+
+<body class="event">
+
+	<header class="dash">
+		<div class="container">
+			<div class="row justify-content-between align-items-center">
+				<div class="col-md-6 col-4">
+					<div class="logo">
+						<img src="img/Logo-02.png" alt="" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-md-1 col-2">
+					<div class="row justify-content-end">
+						<div class="dropdown">
+							<button class="dropbtn"><i class="fas fa-bars"></i></button>
+							<div class="dropdown-content">
+								<a href="#"><i class="fas fa-user-alt"></i> Profile</a>
+								<a href="#"><i class="fas fa-unlock-alt"></i> Change Password</a>
+								<a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="edit-event mb-40">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-10 text-center mt-40">
+					<h1 class="mb-40">Topic Test</h1>
+				</div>
+			</div>
+			<!-- Edit Test-->
+			<form action="">
+				<div class="row justify-content-center">
+					<div class="col-md-3">
+						<label class="d-block mb-10">Date <span>*</span></label>
+						<input type="date" name="date" value="2020-10-30" required>
+					</div>
+					<div class="col-md-3">
+						<label class="d-block mb-10">Time <span>*</span></label>
+						<input type="Time" name="time" value="14:30" required>
+					</div>
+					<div class="col-md-3">
+						<label class="d-block mb-10">Duration <span>*</span></label>
+						<input class="html-duration-picker" name="duration" value="02:30:00">
+					</div>
+					<div class="w-100 mt-40"></div>
+					<div class="col-md-3">
+						<label class="d-block mb-10">Topic <span>*</span></label>
+						<input type="text" name="topic" value="Topic" required>
+					</div>
+					<div class="col-md-3">
+						<label class="d-block mb-10">Client <span>*</span></label>
+						<select name="client" required>
+							<option value="novartis">Novartis</option>
+							<option value="bayer">Bayer</option>
+							<option value="sandoz">Sandoz</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label class="d-block mb-10">Country <span>*</span></label>
+						<select class="selectpicker countrypicker" name="country" data-flag="true"></select>
+					</div>
+
+					<div class="w-100 mt-40"></div>
+					<div class="row justify-content-around align-items-end">
+						<div class="col-md-3">
+							<label class="d-block mb-10">Emails <span>*</span></label>
+							<textarea name="email" value="Emails" rows="5" cols="40" required></textarea>
+						</div>
+						<div class="col-md-3" style="text-align: right;">
+							<button type="submit" class="btn-1 add-btn">Save</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- Edit Test-->
+		</div>
+	</div>
+
+	<script src="{%static 'js/jquery.js'%}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="{%static 'js/jquery.magnific-popup.min.js'%}"></script>
+	<script src="{%static 'js/clipboard.min.js'%}"></script>
+	<script src="{%static 'js/wow.min.js'%}"></script>
+	<script src="{%static 'js/all.js'%}"></script>
+	<script src="{%static 'js/particles.min.js'%}"></script>
+	<script src="{%static 'js/app.js'%}"></script>
+	<script src="{%static 'js/rellax.min.js'%}"></script>
+	<script src="{%static 'js/bootstrap.min.js'%}"></script>
+	<script src="{%static 'js/html-duration-picker.min.js'%}"></script>
+	<script src="{%static 'js/countrypicker.min.js'%}"></script>
+	<script src="{%static 'js/main.js'%}"></script>
+	<script src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
+</body>
+
+</html>
